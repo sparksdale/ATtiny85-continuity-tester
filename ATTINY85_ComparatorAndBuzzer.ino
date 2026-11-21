@@ -23,6 +23,9 @@ void noBeep(){
 
 void setup() {
   DDRB |= (1<<LED_PIN) | (1<<BUZZER_PIN); //Data Direction Register B = Setting LED & BUZZER pins as OUTPUTS
+  DDRB &= ~((1 << PB0 ) | (1 << PB1)); // Set PB0 and PB1 as INPUTS
+
+  PORTB |= ((1 << PB0) | (1 << PB1)); // Enable internal pull-up resistors for input pins
 
   //By disabling Analog Comparator MUX, we set AIN1 as our (-) input for our analog comparator
   //ADCSRB &= ~(1 << ACME); //Disabling Analog Comparator MUX
